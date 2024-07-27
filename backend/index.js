@@ -4,10 +4,10 @@ const path = require('path')
 const express = require('express');
 const bodyParser = require('body-parser');
 
+dotenv.config();
+
 const generatorService = require('./services/generator');
 const merchantService = require('./services/merchant');
-
-dotenv.config();
 
 const app = express();
 const port = 3000;
