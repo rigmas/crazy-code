@@ -48,7 +48,7 @@ const recommendedRestaurants = [
         </template>
       </NInput>
     </div>
-    <div class="flex overflow-x-scroll no-scrollbar mb-4 space-x-4 mt-7">
+    <div class="flex overflow-x-scroll no-scrollbar mb-4 space-x-4 mt-6">
       <div class="flex flex-col items-center">
         <img src="https://img.icons8.com/?size=48&id=65laSYcIZM8m&format=png&color=000000" alt="Snack" />
         <span class="text-sm">Snack</span>
@@ -71,7 +71,7 @@ const recommendedRestaurants = [
       </div>
     </div>
 
-    <div class="grid grid-cols-2 gap-4 mb-4 mt-8">
+    <div class="grid grid-cols-2 gap-4 mb-4 mt-6">
       <div class="p-4 rounded-lg flex justify-between" style="background-color: #FFD2CB">
         <div>
           <div class=" font-semibold">Near Me</div>
@@ -102,7 +102,7 @@ const recommendedRestaurants = [
       </div>
     </div>
 
-    <NButton @click="toMap" type="primary" class="w-full mt-6" size="large">Grab ARcade - Start Journey</NButton>
+    <NButton @click="toMap" type="primary" class="w-full mt-5" size="large">Grab ARcade - Start Journey</NButton>
 
     <div class="mt-7 mb-4">
       <h2 class="text-lg font-semibold mb-2">Order Again</h2>

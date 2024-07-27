@@ -48,7 +48,7 @@ const newPromo = [
         </div>
       </div>
       <div>
-        <div class="text-sm mt-2" style="color: #FBFFFF">dari kemarin </div>
+        <div class="text-sm ml-4 mt-2" style="color: #FBFFFF">Kemarin </div>
         <div class="text-sm mt-1" style="color: #FBFFFF"> Rp 2.350.100</div>
       </div>
     </div>
