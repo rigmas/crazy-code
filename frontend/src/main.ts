@@ -2,7 +2,6 @@ import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router/auto'
 import App from './App.vue'
 
-import '@unocss/reset/tailwind.css'
 import './styles/main.css'
 import 'uno.css'
 

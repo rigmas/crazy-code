@@ -4,11 +4,13 @@ import path from 'node:path'
 import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 import AutoImport from 'unplugin-auto-import/vite'
 import UnoCSS from 'unocss/vite'
 import VueMacros from 'unplugin-vue-macros/vite'
 import VueRouter from 'unplugin-vue-router/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
+import basicSsl from '@vitejs/plugin-basic-ssl'
 
 export default defineConfig({
   resolve: {
@@ -54,11 +56,13 @@ export default defineConfig({
     // https://github.com/antfu/vite-plugin-components
     Components({
       dts: true,
+      resolvers: [NaiveUiResolver()],
     }),
 
     // https://github.com/antfu/unocss
     // see uno.config.ts for config
     UnoCSS(),
+    basicSsl(),
   ],
 
   // https://github.com/vitest-dev/vitest
