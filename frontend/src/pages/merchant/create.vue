@@ -101,15 +101,6 @@ async function captureImage() {
 }
 
 async function continue2AI() {
-  const fileReader = new FileReader()
-  fileReader.readAsDataURL(new Blob([imageBuffer]))
-  const blob = new Blob([imageBuffer])
-  const dl = document.createElement('a')
-  dl.download = `targets--${Date.now()}.mind`
-  dl.href = URL.createObjectURL(blob)
-  dl.click()
-  URL.revokeObjectURL(dl.href)
-
   const mindText = await blobToBase64(new Blob([imageBuffer]))
   localStorage.setItem(MindMarker, mindText)
   localStorage.setItem(MindImage, imgRef.value!.src)
