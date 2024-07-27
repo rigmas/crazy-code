@@ -11,6 +11,7 @@ import VueMacros from 'unplugin-vue-macros/vite'
 import VueRouter from 'unplugin-vue-router/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
 import basicSsl from '@vitejs/plugin-basic-ssl'
+import ViteVConsole from 'vite-plugin-vconsole'
 
 export default defineConfig({
   resolve: {
@@ -29,6 +30,17 @@ export default defineConfig({
             defineModel: true,
           },
         }),
+      },
+    }),
+
+    ViteVConsole({
+      entry: path.resolve('src/main.ts'),
+      localEnabled: true,
+      enabled: true,
+      config: {
+        // vconsole options
+        maxLogNumber: 1000,
+        theme: 'dark',
       },
     }),
 
@@ -68,5 +80,16 @@ export default defineConfig({
   // https://github.com/vitest-dev/vitest
   test: {
     environment: 'jsdom',
+  },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://127.0.0.1:3000',
+        changeOrigin: false,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        },
+      },
+    },
   },
 })

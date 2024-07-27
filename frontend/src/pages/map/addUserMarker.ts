@@ -27,7 +27,7 @@ export async function addUserMarker(map: Mapl) {
     layout: {
       'icon-image': UserMarkerLayerID,
       'icon-rotate': ['get', 'heading'],
-      'icon-size': 0.5,
+      'icon-size': 0.75,
       'icon-pitch-alignment': 'map',
     },
   })

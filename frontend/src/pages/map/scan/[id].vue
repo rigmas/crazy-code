@@ -70,7 +70,7 @@ onMounted(() => {
       </TransitionSlide>
     </Teleport>
 
-    <iframe class="h-full w-full" :src="`/api/arframe.html?id=${route.params?.id ?? ''}`" />
+    <iframe class="h-full w-full" :src="`/api/render/${route.params?.id ?? ''}`" />
   </div>
 </template>
 
