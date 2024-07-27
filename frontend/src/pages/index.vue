@@ -7,14 +7,14 @@
     <div class="flex items-center justify-between mb-4">
       <div class="flex items-center space-x-2">
         <div>
-          <img src="https://img.icons8.com/ios-glyphs/30/000000/back.png" alt="Back" />
+          <img class="mt-3" src="https://img.icons8.com/ios-glyphs/30/000000/back.png" alt="Back" />
+        </div>
+        <div class="mt-5">
+          <div class="text-xs">DELIVER TO</div>
+          <div class="font-semibold">South Quarter</div>
         </div>
         <div>
-          <p class="text-xs">DELIVER TO</p>
-          <p class="font-semibold">South Quarter</p>
-        </div>
-        <div>
-          <img src="https://img.icons8.com/material-outlined/24/000000/expand-arrow.png" alt="Expand" />
+          <img class="mt-2" src="https://img.icons8.com/material-outlined/24/000000/expand-arrow.png" alt="Expand" />
         </div>
       </div>
       <div class="flex space-x-4">
@@ -27,10 +27,10 @@
       </div>
     </div>
 
-    <div class="mb-4">
+    <div class="mb-4 mt-5">
       <input type="text" class="w-full p-3 rounded-full shadow-sm border border-gray-300 placeholder-gray-500" placeholder="What shall we deliver?">
     </div>
-    <div class="flex overflow-x-scroll no-scrollbar mb-4 space-x-4">
+    <div class="flex overflow-x-scroll no-scrollbar mb-4 space-x-4 mt-7">
       <div class="flex flex-col items-center">
         <img src="https://img.icons8.com/?size=48&id=65laSYcIZM8m&format=png&color=000000" alt="Snack" />
         <span class="text-sm">Snack</span>
@@ -53,29 +53,26 @@
       </div>
     </div>
 
-    <div class="grid grid-cols-2 gap-4 mb-4">
+    <div class="grid grid-cols-2 gap-4 mb-4 mt-8">
       <div class=" p-4 rounded-lg" style="background-color: #FFD2CB">
-        <p class=" font-semibold">Near Me</p>
-        <p class="text-xs">Get it quick</p>
+        <div class=" font-semibold">Near Me</div>
+        <div class="text-xs">Get it quick</div>
       </div>
       <div class=" p-4 rounded-lg" style="background-color: #B8E5E0;">
-        <p class="font-semibold">Big Promo</p>
-        <p class="text-xs">Save up to 70%</p>
+        <div class="font-semibold">Big Promo</div>
+        <div class="text-xs">Save up to 70%</div>
       </div>
       <div class=" p-4 rounded-lg" style="background-color: #FFE3CC;">
-        <p class="font-semibold">Top Selling!</p>
-        <p class="text-xs">Curated for you</p>
+        <div class="font-semibold">Top Selling!</div>
+        <div class="text-xs">Curated for you</div>
       </div>
       <div class=" p-4 rounded-lg" style="background-color: #D9FCDE;">
-        <p class="font-semibold">Payday Flash</p>
-        <p class="text-xs">Disc up to 100%, order now</p>
+        <div class="font-semibold">Payday Flash</div>
+        <div class="text-xs">Disc up to 100%, order now</div>
       </div>
     </div>
 
-    <div class="mb-4">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9cSGzVkaZvJD5722MU5A-JJt_T5JMZzotcw&s" alt="-" class="w-full rounded-lg" />
-    </div>
-
+    <NButton type="primary" class="w-full mt-6" size="large">Grab ARcade - Start Journey</NButton>
   </div>
 </template>
 
