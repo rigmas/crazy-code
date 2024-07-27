@@ -1,0 +1,36 @@
+:80 {
+       root * /usr/share/caddy
+       file_server
+
+       @webmanifest path *.webmanifest
+       header @webmanifest Content-Type "application/manifest+json"
+
+       @webapp path *.webapp
+       header @webapp Content-Type "application/x-web-app-manifest+json"
+
+       header / {
+          Cache-Control "public, max-age=0, s-maxage=0, must-revalidate"
+       }
+
+       header /assets/ {
+          Cache-Control "public, max-age=31536000, s-maxage=31536000, immutable"
+       }
+
+       header /data/ {
+          Cache-Control "public, max-age=31536000, s-maxage=31536000, immutable"
+       }
+
+       header /icons/ {
+          Cache-Control "public, max-age=31536000, s-maxage=31536000, immutable"
+       }
+
+       header /images/ {
+          Cache-Control "public, max-age=31536000, s-maxage=31536000, immutable"
+       }
+
+       header /workbox-* {
+          Cache-Control "public, max-age=31536000, s-maxage=31536000, immutable"
+       }
+
+       try_files {path} /
+}
