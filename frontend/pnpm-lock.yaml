@@ -24,12 +24,18 @@ importers:
       '@iconify-json/carbon':
         specifier: ^1.1.33
         version: 1.1.36
+      '@iconify-json/solar':
+        specifier: ^1.1.9
+        version: 1.1.9
       '@morev/vue-transitions':
         specifier: ^3.0.2
         version: 3.0.2(rollup@4.19.1)(vue@3.4.34(typescript@5.5.4))
       '@turf/nearest-point':
         specifier: ^7.0.0
         version: 7.0.0
+      '@types/canvas-confetti':
+        specifier: ^1.6.4
+        version: 1.6.4
       '@types/geojson':
         specifier: ^7946.0.14
         version: 7946.0.14
@@ -57,6 +63,9 @@ importers:
       '@vue/test-utils':
         specifier: ^2.4.6
         version: 2.4.6
+      canvas-confetti:
+        specifier: ^1.9.3
+        version: 1.9.3
       eslint:
         specifier: ^9.3.0
         version: 9.8.0
@@ -672,6 +681,9 @@ packages:
   '@iconify-json/carbon@1.1.36':
     resolution: {integrity: sha512-NC3VcqLtwLZpi7+LeXj+99/byv+asrnCQxiDNCZV6hKr9WcNh6C25kJguJYfN+dV54kOkw78e+6PitQi2Bppnw==}
 
+  '@iconify-json/solar@1.1.9':
+    resolution: {integrity: sha512-BcWzZqA02BiQduYizqU/J4v4RNs0MkjZUGpMbejpozH8YQSt3+S/LfV6zfVRonx/2DhXTVSqiLa1abDRAZtojQ==}
+
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
 
@@ -925,6 +937,9 @@ packages:
 
   '@turf/nearest-point@7.0.0':
     resolution: {integrity: sha512-h3uLUoeo6JWTirpI499SRooqEoDxia2C/kDqAwAeXFqwxzGqGprtNA/C0bMgHfxE1M2rxORGzvgywKirpLu1dA==}
+
+  '@types/canvas-confetti@1.6.4':
+    resolution: {integrity: sha512-fNyZ/Fdw/Y92X0vv7B+BD6ysHL4xVU5dJcgzgxLdGbn8O3PezZNIJpml44lKM0nsGur+o/6+NZbZeNTt00U1uA==}
 
   '@types/eslint@8.56.11':
     resolution: {integrity: sha512-sVBpJMf7UPo/wGecYOpk2aQya2VUGeHhe38WG7/mN5FufNSubf5VT9Uh9Uyp8/eLJpu1/tuhJ/qTo4mhSB4V4Q==}
@@ -1639,6 +1654,9 @@ packages:
 
   caniuse-lite@1.0.30001643:
     resolution: {integrity: sha512-ERgWGNleEilSrHM6iUz/zJNSQTP8Mr21wDWpdgvRwcTXGAq6jMtOUPP4dqFPTdKqZ2wKTdtB+uucZ3MRpAUSmg==}
+
+  canvas-confetti@1.9.3:
+    resolution: {integrity: sha512-rFfTURMvmVEX1gyXFgn5QMn81bYk70qa0HLzcIOSVEyl57n6o9ItHeBtUSWdvKAPY0xlvBHno4/v3QPrT83q9g==}
 
   chai@4.5.0:
     resolution: {integrity: sha512-RITGBfijLkBddZvnn8jdqoTypxvqbOLYQkGGxXzeFjVHvudaPw0HNFD9x928/eUwYWd2dPCugVqspGALTZZQKw==}
@@ -4471,6 +4489,10 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
+  '@iconify-json/solar@1.1.9':
+    dependencies:
+      '@iconify/types': 2.0.0
+
   '@iconify/types@2.0.0': {}
 
   '@iconify/utils@2.1.25':
@@ -4776,6 +4798,8 @@ snapshots:
       '@turf/helpers': 7.0.0
       '@turf/meta': 7.0.0
       tslib: 2.6.3
+
+  '@types/canvas-confetti@1.6.4': {}
 
   '@types/eslint@8.56.11':
     dependencies:
@@ -5783,6 +5807,8 @@ snapshots:
   callsites@3.1.0: {}
 
   caniuse-lite@1.0.30001643: {}
+
+  canvas-confetti@1.9.3: {}
 
   chai@4.5.0:
     dependencies:
