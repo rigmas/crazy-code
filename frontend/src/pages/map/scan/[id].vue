@@ -7,17 +7,16 @@ const router = useRouter()
 
 const objectFound = ref(false)
 const continueExplore = ref(false)
-window.addEventListener('message', (e) => {
-  if (e.type !== 'FOUND') {
-    return
-  }
-
-  objectFound.value = true
-  fireConfetti()
-})
 
 onMounted(() => {
-  // fireConfetti()
+  window.addEventListener('message', (e) => {
+    if (e.data !== 'TARGET_FOUND') {
+      return
+    }
+
+    objectFound.value = true
+    fireConfetti()
+  })
 })
 </script>
 
@@ -70,7 +69,7 @@ onMounted(() => {
       </TransitionSlide>
     </Teleport>
 
-    <iframe class="h-full w-full" :src="`/api/arframe.html?id=${route.params?.id ?? ''}`" />
+    <iframe class="h-full w-full" :src="`/api/render/${route.params?.id ?? ''}`" />
   </div>
 </template>
 

@@ -14,7 +14,7 @@ const menuItems = [
 
 <template>
   <div class="p-4 font-sans">
-    <div class="flex justify-between items-center">
+    <div class="flex items-center justify-between">
       <div class="flex flex-col">
         <div class="text-2xl font-bold mt-3">Halo, John Doe</div>
         <div class="text-gray-500 text-lg mt-3">Ayam Geprek - Grand Indonesia</div>
@@ -50,6 +50,5 @@ const menuItems = [
         <p>{{ item.text }}</p>
       </div>
     </div>
-
   </div>
 </template>

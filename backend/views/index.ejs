@@ -6,20 +6,44 @@
   </head>
 
   <body>
-    <a-scene id="mindarScene" mindar-image="<%= mindFile %>" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+    <a-scene
+      id="mindarScene"
+      mindar-image="imageTargetSrc: <%= mindFile %>"
+      color-space="sRGB"
+      renderer="colorManagement: true, physicallyCorrectLights"
+      vr-mode-ui="enabled: false"
+      device-orientation-permission-ui="enabled: false"
+    >
       <a-assets>
-	      <img id="card" src="<%= imageFile %>" />
+        <img id="card" src="<%= imageFile %>" />
       </a-assets>
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-      <a-entity mindar-image-target="targetIndex: 0">
-        <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+      <a-entity id="ar-entity" mindar-image-target="targetIndex: 0">
+        <a-plane
+          src="#card"
+          position="0 0 0"
+          height="0.552"
+          width="1"
+          rotation="0 0 0"
+        ></a-plane>
       </a-entity>
     </a-scene>
 
     <script type="text/javascript">
-      window.postMessage("")
+      console.log("document loaded");
+      const scene = document.getElementById("mindarScene");
+      let arSystem;
+      scene.addEventListener("loaded", () => {
+        arSystem = scene.systems["mindar-image-system"];
+      });
+
+      const targetEntity = document.getElementById("ar-entity");
+      targetEntity.addEventListener("targetFound", (e) => {
+        window.parent.postMessage("TARGET_FOUND");
+        console.log("found");
+      });
     </script>
   </body>
 </html>

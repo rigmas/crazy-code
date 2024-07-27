@@ -1,25 +1,25 @@
 import type { Map as MglMap } from 'maplibre-gl'
-import { UserMarkerLayerID } from '~/pages/map/addUserMarker'
+import type { Feature, Point } from 'geojson'
 
 export const MerchantMarkerLayerID = 'merchantMarker'
 
-export async function addMerchantMarker(map: MglMap) {
+export async function addMerchantMarker(map: MglMap, features: Feature<Point>[]) {
   const marker = await map.loadImage('/MerchantMarker.png')
   map.addImage(MerchantMarkerLayerID, marker.data, {})
   map.addSource(MerchantMarkerLayerID, {
     type: 'geojson',
     data: {
       type: 'FeatureCollection',
-      features: [],
+      features,
     },
   })
 
   map.addLayer({
-    id: UserMarkerLayerID,
-    source: UserMarkerLayerID,
+    id: MerchantMarkerLayerID,
+    source: MerchantMarkerLayerID,
     type: 'symbol',
     layout: {
-      'icon-image': UserMarkerLayerID,
+      'icon-image': MerchantMarkerLayerID,
       'icon-size': 0.5,
       'icon-pitch-alignment': 'viewport',
     },
