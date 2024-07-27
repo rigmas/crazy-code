@@ -26,7 +26,7 @@ const menuItems = [
         <div class="text-gray-500 text-lg mt-3">Ayam Geprek - Grand Indonesia</div>
         <div class="flex items-center w-fit mt-3" style="background-color: #D9FCDE; border-radius: 5px;">
           <span class=" text-lg ml-2" style="color: #06B056; font-weight: bold; ">Rp 10.000.000</span>
-          <Icon icon="mdi:chevron-right" class="text-gray-500" />
+          <Icon icon="mdi:chevron-right" style="color: #06B056" class="text-gray-500" />
         </div>
       </div>
     </div>
@@ -46,7 +46,9 @@ const menuItems = [
       </div>
     </div>
 
-    <NButton @click="toJourney" type="primary" class="w-full mt-6" size="large">Start Decorating Store</NButton>
+    <NButton @click="toJourney" type="primary" class="w-full mt-6" size="large">
+      <Icon icon="mdi-camera-outline" class="mr-3 text-xl" /> Start Decorating Store
+    </NButton>
 
     <div class="grid grid-cols-4 gap-4 mt-7">
       <div class="flex flex-col items-center text-center" v-for="item in menuItems" :key="item.text">
