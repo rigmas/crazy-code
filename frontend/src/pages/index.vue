@@ -1,4 +1,9 @@
 <script setup lang="ts">
+const router = useRouter()
+
+function toMap() {
+  router.push('/map')
+}
 </script>
 
 <template>
@@ -72,7 +77,7 @@
       </div>
     </div>
 
-    <NButton type="primary" class="w-full mt-6" size="large">Grab ARcade - Start Journey</NButton>
+    <NButton @click="toMap" type="primary" class="w-full mt-6" size="large">Grab ARcade - Start Journey</NButton>
   </div>
 </template>
 

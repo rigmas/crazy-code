@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 
+const router = useRouter()
+
+function toJourney() {
+  router.push('/merchant/create')
+}
+
 const menuItems = [
   { icon: 'mdi:clipboard-list', text: 'Pesanan' },
   { icon: 'mdi:restaurant-menu', text: 'Menu' },
@@ -40,7 +46,7 @@ const menuItems = [
       </div>
     </div>
 
-    <NButton type="primary" class="w-full mt-6" size="large">Start Decorating Store</NButton>
+    <NButton @click="toJourney" type="primary" class="w-full mt-6" size="large">Start Decorating Store</NButton>
 
     <div class="grid grid-cols-4 gap-4 mt-7">
       <div class="flex flex-col items-center text-center" v-for="item in menuItems" :key="item.text">
