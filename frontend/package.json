@@ -9,8 +9,7 @@
     "typecheck": "vue-tsc --noEmit",
     "preview": "vite preview",
     "test": "vitest",
-    "up": "taze major -I",
-    "postinstall": "npx simple-git-hooks"
+    "up": "taze major -I"
   },
   "dependencies": {
     "@vueuse/core": "^10.9.0",
@@ -46,7 +45,6 @@
     "naive-ui": "^2.39.0",
     "nanoid": "^5.0.7",
     "pnpm": "^9.1.1",
-    "simple-git-hooks": "^2.11.1",
     "taze": "^0.13.8",
     "typescript": "^5.4.5",
     "unocss": "^0.60.2",
