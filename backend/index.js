@@ -16,7 +16,7 @@ const merchantService = require('./services/merchant');
 
 app.use(express.json());
 
-app.post('/generate/images', (req, res) => {
+app.post('/api/generate/images', (req, res) => {
   generatorService.image(req)
     .then(data => res.status(201).json(data))
     .catch(err => {
@@ -24,7 +24,7 @@ app.post('/generate/images', (req, res) => {
     })
 });
 
-app.post('/generate/text', (req, res) => {
+app.post('/api/generate/text', (req, res) => {
   generatorService.text(req)
     .then(data => res.status(201).json(data))
     .catch(err => {
@@ -32,7 +32,7 @@ app.post('/generate/text', (req, res) => {
     })
 });
 
-app.post('/merchant', (req, res) => {
+app.post('/api/merchant', (req, res) => {
   merchantService.create(req)
     .then(data => res.status(201).json(data))
     .catch(err => {
@@ -40,7 +40,7 @@ app.post('/merchant', (req, res) => {
     })
 })
 
-app.get('/merchants', (req, res) => {
+app.get('/api/merchants', (req, res) => {
   merchantService.getAll()
     .then(data => res.status(200).json(data))
     .catch(err => {
@@ -48,7 +48,7 @@ app.get('/merchants', (req, res) => {
     })
 })
 
-app.get('/merchant/:id', (req, res) => {
+app.get('/api/merchant/:id', (req, res) => {
   merchantService.getById(req)
     .then(data => res.status(200).json(data))
     .catch(err => {
@@ -56,7 +56,7 @@ app.get('/merchant/:id', (req, res) => {
     })
 })
 
-app.get("/render/:id", (req, res) => {
+app.get('/api/render/:id', (req, res) => {
   generatorService.html(req)
     .then(data => res.render('index', data))
     .catch(err => {
@@ -64,7 +64,7 @@ app.get("/render/:id", (req, res) => {
     })
 })
 
-app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
+app.use('/api/uploads', express.static(path.join(__dirname, 'public/uploads')));
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
