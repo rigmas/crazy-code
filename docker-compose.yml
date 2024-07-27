@@ -16,7 +16,7 @@ services:
     build:
       context: ./frontend
     ports:
-      - "80:4001"
+      - "4001:80"
 
   redis:
     image: redis:alpine
