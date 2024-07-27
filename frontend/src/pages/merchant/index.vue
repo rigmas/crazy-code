@@ -18,7 +18,7 @@ const menuItems = [
 ]
 
 const newPromo = [
-  { name: 'SuperBank X Grab', img: '../../../public/superbank-promo.jpeg' },
+  { name: 'Superbank X Grab', img: '../../../public/superbank-grab.png' },
   { name: 'Atur Promosi Anda', img: '../../../public/atur-promo.png' },
   { name: 'Promo Kios Banget', img: '../../../public/promo-kios-banget.jpg' },
   { name: 'Serba Bisa Grab Merchant', img: '../../../public/serba-bisa-promo.jpeg' },
@@ -26,7 +26,7 @@ const newPromo = [
 </script>
 
 <template>
-  <div class="p-6 font-sans">
+  <div class="p-5 font-sans">
     <div class="flex items-center justify-between">
       <div class="flex flex-col">
         <div class="text-2xl font-bold mt-3">Halo, John Doe</div>
@@ -48,7 +48,7 @@ const newPromo = [
         </div>
       </div>
       <div>
-        <div class="text-sm mt-2" style="color: #FBFFFF">dari kemarin </div>
+        <div class="text-sm ml-4 mt-2" style="color: #FBFFFF">Kemarin </div>
         <div class="text-sm mt-1" style="color: #FBFFFF"> Rp 2.350.100</div>
       </div>
     </div>
@@ -66,7 +66,7 @@ const newPromo = [
       </div>
     </div>
 
-    <div class="mt-8 mb-4">
+    <div class="mt-6 mb-4">
       <h2 class="text-lg font-semibold mb-2">Yang Baru</h2>
       <div class="flex overflow-x-scroll no-scrollbar space-x-4">
         <div class="flex-shrink-0 w-48 text-center" v-for="Merchant in newPromo" :key="Merchant.name">
