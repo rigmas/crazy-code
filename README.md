@@ -2,6 +2,9 @@
 
 
 ## Overview
+![Application architeture](./docs/app_diagram.png)
+
+
 This repository contains two primary components:
 
 1. Backend: An ExpressJS application that uses EJS for templating, Redis as a database, and OpenAPI for text-to-text and text-to-image generation.
