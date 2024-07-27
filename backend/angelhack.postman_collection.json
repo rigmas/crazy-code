@@ -42,7 +42,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"prompt\": \"Tolong buatkan kata-kata untuk deskripsi promosi mie ayam, buatkan deskripsi yang menarik dalam bahasa Indonesia\"\n}",
+					"raw": "{\n    \"prompt\": \"Rib eye steak with black pepper sauce, tomato, carrot, mash potatoes delicious\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -50,7 +50,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/api/generate/image",
+					"raw": "localhost:3000/api/generate/images",
 					"host": [
 						"localhost"
 					],
@@ -58,7 +58,7 @@
 					"path": [
 						"api",
 						"generate",
-						"image"
+						"images"
 					]
 				}
 			},

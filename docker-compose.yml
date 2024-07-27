@@ -6,6 +6,7 @@ services:
       context: ./backend
     ports:
       - "3000:3000"
+    restart: always
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379

@@ -36,6 +36,8 @@ exports.getAll = async () => {
     const cacheData = await Cache.getAll()
     const data = []
 
+    if (!cacheData) return { data: null }
+
     cacheData.map(item => {
       data.push(JSON.parse(item))
     })
