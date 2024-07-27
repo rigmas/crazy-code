@@ -9,7 +9,7 @@ function toMap() {
 
 const recommendedRestaurants = [
   { name: 'Kebab Arabian', img: '../../public/chicken-kebab.jpg', description: 'Delicious Kebab' },
-  { name: 'Pizza Kemanggisan', img: '../../public/supreme.jpg', description: 'Super Pizza' },
+  { name: 'Pizza Kemanggisan', img: '../../public/supreme.jpg', description: 'Spesial Pizza' },
   { name: 'Sate Srengseng', img: '../../public/sate-kambing.jpg', description: 'Kambing Muda' },
   { name: 'Nasi Goreng Slipi', img: '../../public/nasi-goreng-special.jpg', description: 'Nasi Goreng Special' },
   { name: 'Pasta Sarinah', img: '../../public/aglio-olio.jpeg', description: 'Pasta Enak' },
@@ -104,7 +104,7 @@ const recommendedRestaurants = [
 
     <NButton @click="toMap" type="primary" class="w-full mt-6" size="large">Grab ARcade - Start Journey</NButton>
 
-    <div class="mt-8 mb-4">
+    <div class="mt-7 mb-4">
       <h2 class="text-lg font-semibold mb-2">Order Again</h2>
       <div class="flex overflow-x-scroll no-scrollbar space-x-4">
         <div class="flex-shrink-0 w-48" v-for="restaurant in recommendedRestaurants" :key="restaurant.name">
