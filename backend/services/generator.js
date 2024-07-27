@@ -26,15 +26,17 @@ exports.text = async (req) => {
 exports.html = async (req) => {
   const { id } = req.params
 
-  const reqProxy = req.headers['x-forwarded-for']
+  const reqHost = req.headers?.['x-forwarded-host'] ?? req.headers['host']
+  const reqProtocol = req.headers?.['x-forwarded-proto'] ?? req.protocol
+  const reqProxy = `${reqProtocol}://${reqHost}`
 
   try {
     const data = await Cache.get(id)
     const parsed = JSON.parse(data)
 
     return {
-      imageFile: `${reqProxy}/${parsed.photo}`,
-      mindFile: `${reqProxy}/${parsed.mindfile}` 
+      imageFile: `${reqProxy}/api/uploads/${parsed.photo}`,
+      mindFile: `${reqProxy}/api/uploads/${parsed.mindfile}`
     }
   } catch (err) {
     throw new Error(`Error when generating html: ${err}`)

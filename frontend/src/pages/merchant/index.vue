@@ -14,12 +14,19 @@ const menuItems = [
   { icon: 'mdi:finance', text: 'Keuangan' },
   { icon: 'mdi:account-group', text: 'Karyawan' },
   { icon: 'mdi:chart-timeline-variant', text: 'Analisis' },
-  { icon: 'mdi:message', text: 'Masukan' },
+  { icon: 'mdi:comment-text', text: 'Masukan' },
+]
+
+const newPromo = [
+  { name: 'SuperBank X Grab', img: '../../../public/superbank-promo.jpeg' },
+  { name: 'Atur Promosi Anda', img: '../../../public/atur-promo.png' },
+  { name: 'Promo Kios Banget', img: '../../../public/promo-kios-banget.jpg' },
+  { name: 'Serba Bisa Grab Merchant', img: '../../../public/serba-bisa-promo.jpeg' },
 ]
 </script>
 
 <template>
-  <div class="p-4 font-sans">
+  <div class="p-6 font-sans">
     <div class="flex items-center justify-between">
       <div class="flex flex-col">
         <div class="text-2xl font-bold mt-3">Halo, John Doe</div>
@@ -58,5 +65,26 @@ const menuItems = [
         <p>{{ item.text }}</p>
       </div>
     </div>
+
+    <div class="mt-8 mb-4">
+      <h2 class="text-lg font-semibold mb-2">Yang Baru</h2>
+      <div class="flex overflow-x-scroll no-scrollbar space-x-4">
+        <div class="flex-shrink-0 w-48 text-center" v-for="Merchant in newPromo" :key="Merchant.name">
+          <img :src="Merchant.img" alt="Merchant Image" class="w-full h-32 object-cover rounded-lg mb-2" />
+          <div class="font-semibold">{{ Merchant.name }}</div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
+
+<style>
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+</style>
