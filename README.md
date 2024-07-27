@@ -1,4 +1,4 @@
-# Application
+# Grab ARcade
 
 
 ## Overview
@@ -38,7 +38,7 @@ The project is containerized using Docker and orchestrated with Docker Compose, 
 ### Configuration
   - Backend
       - The backend service is configured to run on port 3000 (configurable in docker-compose.yml).
-      Redis is used as a cache database, and API endpoints are defined in the ExpressJS application.
+      Redis is used as a cache database, ejs use for rendering html template, and API endpoints are defined in the ExpressJS application.
       - The backend application includes features from openAPI (dall-e-3 and chatGPT 4)
   
   - Frontend
