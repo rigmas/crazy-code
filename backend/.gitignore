@@ -9,3 +9,5 @@ node-test.js
 .DS_Store
 
 .env
+
+public/uploads.gitkeep
