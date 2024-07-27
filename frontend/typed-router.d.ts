@@ -22,6 +22,7 @@ declare module 'vue-router/auto-routes' {
     '/map/': RouteRecordInfo<'/map/', '/map', Record<never, never>, Record<never, never>>,
     '/map/scan/[id]': RouteRecordInfo<'/map/scan/[id]', '/map/scan/:id', { id: ParamValue<true> }, { id: ParamValue<false> }>,
     '/merchant/': RouteRecordInfo<'/merchant/', '/merchant', Record<never, never>, Record<never, never>>,
+    '/merchant/create': RouteRecordInfo<'/merchant/create', '/merchant/create', Record<never, never>, Record<never, never>>,
     '/merchant/create-ai': RouteRecordInfo<'/merchant/create-ai', '/merchant/create-ai', Record<never, never>, Record<never, never>>,
     '/merchant/create-submit': RouteRecordInfo<'/merchant/create-submit', '/merchant/create-submit', Record<never, never>, Record<never, never>>,
   }

@@ -4,6 +4,7 @@ import 'mind-ar/dist/mindar-image.prod'
 import { ref, watchEffect } from 'vue'
 import { useDevicesList, useUserMedia } from '@vueuse/core'
 import { MindImage, MindMarker } from '~/constants/CreatePageID'
+import { blobToBase64 } from '~/utils/blobToBase64'
 
 const router = useRouter()
 const currentCamera = ref<string>()
@@ -99,14 +100,21 @@ async function captureImage() {
   }
 }
 
-function continue2AI() {
+async function continue2AI() {
   const fileReader = new FileReader()
   fileReader.readAsDataURL(new Blob([imageBuffer]))
-  fileReader.onloadend = () => {
-    localStorage.setItem(MindMarker, fileReader.result as string)
-    localStorage.setItem(MindImage, imgRef.value!.src)
-    router.push('/merchant/create-ai')
-  }
+  const blob = new Blob([imageBuffer])
+  const dl = document.createElement('a')
+  dl.download = `targets--${Date.now()}.mind`
+  dl.href = URL.createObjectURL(blob)
+  dl.click()
+  URL.revokeObjectURL(dl.href)
+
+  const mindText = await blobToBase64(new Blob([imageBuffer]))
+  localStorage.setItem(MindMarker, mindText)
+  localStorage.setItem(MindImage, imgRef.value!.src)
+
+  await router.push('/merchant/create-ai')
 }
 
 watchEffect(() => {

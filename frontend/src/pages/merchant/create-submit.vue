@@ -2,7 +2,7 @@
 import ky from 'ky'
 import { nanoid } from 'nanoid'
 import { useGeolocation } from '@vueuse/core'
-import { GeneratedAIURL, MindImage } from '~/constants/CreatePageID'
+import { GeneratedAIURL, MindImage, MindMarker } from '~/constants/CreatePageID'
 
 const name = ref<string>()
 const imgMarkerRef = ref<HTMLImageElement>()
@@ -29,8 +29,8 @@ async function submit() {
         name: name.value ?? '',
         long: coords.value.longitude,
         lat: coords.value.latitude,
-        mindfile: localStorage.getItem(MindImage)!.replace('data:image/png;base64', ''),
-        photo: (fileReader.result as string).replace('data:image/png;base64', ''),
+        mindfile: localStorage.getItem(MindMarker)!.replace('data:application/octet-stream;base64,', ''),
+        photo: (fileReader.result as string).replace('data:image/png;base64,', ''),
       },
     })
     loading.value = false

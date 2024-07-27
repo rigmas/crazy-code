@@ -6,6 +6,7 @@ import { Map as MglMap } from 'maplibre-gl'
 import { nearestPoint as findNearestPoint } from '@turf/nearest-point'
 import { TransitionSlide } from '@morev/vue-transitions'
 import { UserMarkerLayerID, addUserMarker } from './addUserMarker'
+import { MerchantMarkerLayerID, addMerchantMarker } from '~/pages/map/addMerchantMarker'
 
 const router = useRouter()
 let map: MglMap
@@ -23,8 +24,9 @@ const {
 
 watchThrottled(coords, () => {
   const source = map.getSource(UserMarkerLayerID) as GeoJSONSource
-  if (source == null)
-    throw new Error('source not found')
+  if (source == null) {
+    return
+  }
 
   source.setData({
     type: 'Feature',
@@ -41,7 +43,7 @@ watchThrottled(coords, () => {
 }, { throttle: 500 })
 
 const BufferRadius = 100
-const merchantFeatures: Feature<Point>[] = []
+let merchantFeatures: Feature<Point, Merchant>[] = []
 const nearestIndex = ref<number>()
 const nearestName = computed(() => {
   if (nearestIndex.value == null) {
@@ -49,6 +51,10 @@ const nearestName = computed(() => {
   }
   return merchantFeatures[nearestIndex.value]?.properties?.name ?? ''
 })
+
+function goInside() {
+  router.push(`/map/scan/${merchantFeatures[nearestIndex.value!].properties.id}`)
+}
 
 function findMerchantInsideBuffer() {
   if (merchantFeatures.length === 0) {
@@ -70,6 +76,13 @@ function findMerchantInsideBuffer() {
   }
 
   nearestIndex.value = nearestPoint.properties.featureIndex
+}
+
+interface Merchant {
+  id: string
+  name: string
+  long: number
+  lat: number
 }
 
 onMounted(() => {
@@ -102,6 +115,38 @@ onMounted(() => {
 
   map.on('load', async () => {
     await addUserMarker(map)
+
+    try {
+      const res: {
+        data: (Merchant | null)[]
+      } = await (await fetch(`${import.meta.env.VITE_BACKEND_URL}/merchants`)).json()
+
+      // const res:  = JSON.parse(resText)
+
+      merchantFeatures = res.data.filter(r => r != null).map(m => ({
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: [m.long, m.lat],
+        },
+        properties: {
+          ...m,
+        },
+      }))
+
+      await addMerchantMarker(map, merchantFeatures)
+
+      map.on('click', MerchantMarkerLayerID, (e) => {
+        console.log(e.features)
+        const index = merchantFeatures.findIndex(f => f.properties.id === e.features![0].properties.id)
+        nearestIndex.value = index
+      })
+    }
+    catch (e) {
+      console.log('Failed to fetch bjir')
+      console.log(e)
+    }
+
     resume()
 
     await until(coords).toMatch(({
@@ -118,7 +163,9 @@ onMounted(() => {
 
 <template>
   <div class="absolute left-0 top-0 h-full w-full">
-    <div class="absolute left-0 top-0 z-10 box-border w-full flex items-center justify-between bg-white px-4 py-3 shadow-sm">
+    <div
+      class="absolute left-0 top-0 z-10 box-border w-full flex items-center justify-between bg-white px-4 py-3 shadow-sm"
+    >
       <NButton
         class="" text size="large" @click="() => {
           router.push('/')
@@ -142,14 +189,17 @@ onMounted(() => {
 
   <Teleport to="body">
     <TransitionSlide :offset="[0, '100%']">
-      <div v-if="nearestIndex != null" class="absolute bottom-0 box-border w-full rounded-lg rounded-lg bg-white px-4 py-6 shadow-lg">
+      <div
+        v-if="nearestIndex != null"
+        class="absolute bottom-0 box-border w-full rounded-lg rounded-lg bg-white px-4 py-6 shadow-lg"
+      >
         <div class="mb-4 w-full text-lg">
           You have arrived at <span class="font-bold">{{ nearestName }}</span>
         </div>
 
-        <button class="w-full btn">
+        <NButton type="primary" class="w-full" @click="() => goInside()">
           Go inside
-        </button>
+        </NButton>
       </div>
     </TransitionSlide>
   </Teleport>
