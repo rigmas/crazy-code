@@ -1,18 +1,24 @@
 const dotenv = require("dotenv");
+const cors = require("cors");
 const path = require('path')
 const express = require('express');
 const bodyParser = require('body-parser');
+
+const generatorService = require('./services/generator');
+const merchantService = require('./services/merchant');
 
 dotenv.config();
 
 const app = express();
 const port = 3000;
 
+const corsOptions = {
+  origin: "*",
+};
+
+app.use(cors(corsOptions));
 app.use(bodyParser.json({ limit: '100mb' }));
 app.set('view engine', 'ejs');
-
-const generatorService = require('./services/generator');
-const merchantService = require('./services/merchant');
 
 app.use(express.json());
 
