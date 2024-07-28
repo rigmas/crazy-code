@@ -140,10 +140,10 @@ onMounted(async () => {
     <canvas id="video-capturer" ref="videoCanvasRef" class="absolute z-[-5]" style="display: none" />
     <video ref="videoRef" autoplay muted class="h-full w-full" />
     <div class="absolute left-0 top-0 h-full w-full flex items-center justify-center">
-      <img ref="imgRef" class="" style="display: none;  background-size: contain;">
+      <img ref="imgRef" class="h-[60%]" style="display: none;  background-size: contain;">
     </div>
 
-    <div class="absolute bottom-0 w-full flex items-center justify-center bg-white">
+    <div class="absolute bottom-5 box-border w-full flex items-center justify-center bg-white px-4">
       <div
         v-if="!captured"
         class="h-[100px] w-[100px] bg-[#41835654] hover:cursor-pointer"
@@ -152,17 +152,17 @@ onMounted(async () => {
       >
         <div class="relative left-[10px] top-[10px] h-[80px] w-[80px] bg-[#0aa03b]" style="border-radius: 50%;" />
       </div>
-      <div v-else class="flex">
+      <div v-else class="w-full flex justify-center">
+        <NButton class="mr-4" type="primary" text @click="() => { retake() }">
+          Retake
+        </NButton>
+
         <NButton
-          class="mr-4" type="primary" secondary @click="() => {
+          class="" type="primary" secondary @click="() => {
             continue2AI()
           }"
         >
           Continue to AI image
-        </NButton>
-
-        <NButton type="primary" text @click="() => { retake() }">
-          Retake
         </NButton>
       </div>
     </div>
