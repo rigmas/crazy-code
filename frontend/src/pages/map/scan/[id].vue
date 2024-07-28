@@ -54,7 +54,11 @@ onMounted(() => {
           </div>
 
           <div class="w-full flex justify-center space-x-4">
-            <NButton type="primary" secondary class="rounded-lg">
+            <NButton
+              type="primary" secondary class="rounded-lg" @click="() => {
+                router.push('/map')
+              }"
+            >
               Back to the world
             </NButton>
             <NButton
