@@ -12,6 +12,8 @@ services:
       - REDIS_PORT=6379
     depends_on:
       - redis
+    volumes:
+      - backend-public:/usr/src/app/public
 
   frontend:
     build:
@@ -29,3 +31,4 @@ services:
 
 volumes:
   redis-data:
+  backend-public:
