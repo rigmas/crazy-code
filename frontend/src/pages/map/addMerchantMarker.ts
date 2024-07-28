@@ -22,6 +22,11 @@ export async function addMerchantMarker(map: MglMap, features: Feature<Point>[])
       'icon-image': MerchantMarkerLayerID,
       'icon-size': 0.5,
       'icon-pitch-alignment': 'viewport',
+      'text-font': ['Montserrat Bold'],
+      'text-field': ['get', 'name'],
+      'text-size': 8,
+      'text-anchor': 'top',
+      'text-offset': [0, 2],
     },
   })
 }
