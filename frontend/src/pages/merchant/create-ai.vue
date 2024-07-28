@@ -32,6 +32,7 @@ function continueToSubmit() {
 function retake() {
   imageURL.value = undefined
   imageRef.value!.src = ''
+  generate()
 }
 </script>
 
@@ -70,7 +71,7 @@ function retake() {
           retake()
         }"
       >
-        Retake
+        Revise
       </NButton>
 
       <NButton
