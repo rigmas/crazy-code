@@ -2,6 +2,11 @@
 
 ## Overview
 
+The project aims to integrate an AR feature into the Grab app, enabling food and store merchants to easily create and display customizable AR promotional content with Generative AI. 
+This unique feature allows users to scan and interact with AR elements in-store, enhancing their offline shopping experience. Key differentiators include the use of Generative AI for content creation, seamless integration with Grab's existing ecosystem, and a user-friendly interface requiring no coding skills from merchants. 
+
+The feature promotes digital empowerment for merchants, enhanced users' experience, and utilising the synergy from Grab's recent acquisition on Chope to tap on new revenue streams.
+
 ![Application architeture](./docs/app_diagram.png)
 
 This repository contains two primary components:
