@@ -13,7 +13,7 @@ services:
     depends_on:
       - redis
     volumes:
-      - backend-public:/usr/src/app/public
+      - ./backend/public:/usr/src/app/public
 
   frontend:
     build:
@@ -31,4 +31,3 @@ services:
 
 volumes:
   redis-data:
-  backend-public:
