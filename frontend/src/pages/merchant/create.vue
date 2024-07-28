@@ -153,7 +153,7 @@ onMounted(async () => {
         <div class="relative left-[10px] top-[10px] h-[80px] w-[80px] bg-[#0aa03b]" style="border-radius: 50%;" />
       </div>
       <div v-else class="w-full flex justify-center">
-        <NButton class="mr-4" type="primary" text @click="() => { retake() }">
+        <NButton class="mr-4" text @click="() => { retake() }">
           Retake
         </NButton>
 
