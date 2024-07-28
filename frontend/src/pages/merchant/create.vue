@@ -123,16 +123,6 @@ onMounted(async () => {
 </script>
 
 <template>
-  <Teleport to="body">
-    <TransitionFade>
-      <div
-        v-if="capturing" class="absolute top-0 z-36 h-full w-full flex items-center justify-center"
-        style="background-color: rgba(0,0,0,0.21)"
-      >
-        <NSpin />
-      </div>
-    </TransitionFade>
-  </Teleport>
   <div class="absolute left-0 top-0 h-full w-full">
     <MerchantHeader>
       Take target picture
@@ -160,7 +150,7 @@ onMounted(async () => {
         </NButton>
 
         <NButton
-          class="" type="primary" secondary @click="() => {
+          class="" type="primary" secondary :loading="capturing" :disabled="capturing" @click="() => {
             continue2AI()
           }"
         >
