@@ -52,7 +52,7 @@ The project is containerized using Docker and orchestrated with Docker Compose, 
 ### Accessing the Application
 - Frontend: Open your browser and navigate to http://localhost:4001 to access the frontend application.
 - Backend: The backend API can be accessed via http://localhost:3000.
-
+Note: The application is designed for mobile view, so for a better user experience, please use the mobile view!
 
 ## Deployment
 This application is already deployed to the cloud,
