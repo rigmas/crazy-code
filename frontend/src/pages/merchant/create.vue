@@ -46,18 +46,19 @@ const {
 const videoRef = ref<HTMLVideoElement>()
 const videoCanvasRef = ref<HTMLCanvasElement>()
 const imgRef = ref<HTMLImageElement>()
+const captured = ref(false)
+const capturing = ref(false)
+const capturingProgress = ref(0)
 
-function setImage(src: string, width: number, height: number) {
+async function setImage(src: string, width: number, height: number) {
+  captured.value = true
+  enabled.value = false
+  await until(imgRef).toBeTruthy()
   imgRef.value!.src = src
   imgRef.value!.style.display = 'inherit'
   imgRef.value!.style.width = `${width}px`
   imgRef.value!.style.height = `${height}px`
-  enabled.value = false
 }
-
-const captured = ref(false)
-const capturing = ref(false)
-const capturingProgress = ref(0)
 
 function retake() {
   imgRef.value!.style.display = 'none'
@@ -81,7 +82,7 @@ async function captureImage() {
   const data = videoCanvasRef.value!.toDataURL('image/png')
   const img = new Image()
   img.src = data
-  setImage(data, width, height)
+  await setImage(data, width, height)
   img.onload = async () => {
     const compiler = new window.MINDAR.IMAGE.Compiler()
     await compiler.compileImageTargets([img], (p) => {
@@ -138,12 +139,13 @@ onMounted(async () => {
     </MerchantHeader>
 
     <canvas id="video-capturer" ref="videoCanvasRef" class="absolute z-[-5]" style="display: none" />
-    <video ref="videoRef" autoplay muted class="h-full w-full" />
-    <div class="absolute left-0 top-0 h-full w-full flex items-center justify-center">
-      <img ref="imgRef" class="h-[60%]" style="display: none;  background-size: contain;">
-    </div>
+    <video v-if="!captured" ref="videoRef" autoplay muted class="h-full w-full" />
+    <img v-else ref="imgRef" class="h-[50%]" style="display: none;  background-size: contain;">
+    <!--    <div class="absolute left-0 top-8 h-full w-full flex items-center justify-center"> -->
+    <!--      -->
+    <!--    </div> -->
 
-    <div class="absolute bottom-5 box-border w-full flex items-center justify-center bg-white px-4">
+    <div class="absolute bottom-0 box-border h-5 w-full flex items-center justify-center bg-white px-4">
       <div
         v-if="!captured"
         class="h-[100px] w-[100px] bg-[#41835654] hover:cursor-pointer"
