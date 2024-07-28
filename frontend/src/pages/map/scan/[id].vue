@@ -37,7 +37,7 @@ onMounted(() => {
       </NButton>
 
       <div class="text-lg font-bold">
-        Wisata Makan
+        Merchant area
       </div>
     </div>
 

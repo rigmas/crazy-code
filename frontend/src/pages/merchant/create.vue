@@ -43,6 +43,10 @@ const {
   autoSwitch: true,
 })
 
+const videoRef = ref<HTMLVideoElement>()
+const videoCanvasRef = ref<HTMLCanvasElement>()
+const imgRef = ref<HTMLImageElement>()
+
 function setImage(src: string, width: number, height: number) {
   imgRef.value!.src = src
   imgRef.value!.style.display = 'inherit'
@@ -50,10 +54,6 @@ function setImage(src: string, width: number, height: number) {
   imgRef.value!.style.height = `${height}px`
   enabled.value = false
 }
-
-const videoRef = ref<HTMLVideoElement>()
-const videoCanvasRef = ref<HTMLCanvasElement>()
-const imgRef = ref<HTMLImageElement>()
 
 const captured = ref(false)
 const capturing = ref(false)
@@ -133,6 +133,10 @@ onMounted(async () => {
     </TransitionFade>
   </Teleport>
   <div class="absolute left-0 top-0 h-full w-full">
+    <MerchantHeader>
+      Take target picture
+    </MerchantHeader>
+
     <canvas id="video-capturer" ref="videoCanvasRef" class="absolute z-[-5]" style="display: none" />
     <video ref="videoRef" autoplay muted class="h-full w-full" />
     <div class="absolute left-0 top-0 h-full w-full flex items-center justify-center">

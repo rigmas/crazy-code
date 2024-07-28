@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { until, useGeolocation } from '@vueuse/core'
 import type { GeoJSONSource } from 'maplibre-gl'
-import type { Feature, Point } from 'geojson'
 import { Map as MglMap } from 'maplibre-gl'
+import type { Feature, Point } from 'geojson'
 import { nearestPoint as findNearestPoint } from '@turf/nearest-point'
 import { TransitionSlide } from '@morev/vue-transitions'
 import { UserMarkerLayerID, addUserMarker } from './addUserMarker'
@@ -116,36 +116,28 @@ onMounted(() => {
   map.on('load', async () => {
     await addUserMarker(map)
 
-    try {
-      const res: {
-        data: (Merchant | null)[]
-      } = await (await fetch(`${import.meta.env.VITE_BACKEND_URL}/merchants`)).json()
+    const res: {
+      data: (Merchant | null)[]
+    } = await (await fetch(`${import.meta.env.VITE_BACKEND_URL}/merchants`)).json()
 
-      // const res:  = JSON.parse(resText)
+    // const res:  = JSON.parse(resText)
 
-      merchantFeatures = res.data.filter(r => r != null).map(m => ({
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [m.long, m.lat],
-        },
-        properties: {
-          ...m,
-        },
-      }))
+    merchantFeatures = res.data.filter(r => r != null).map(m => ({
+      type: 'Feature',
+      geometry: {
+        type: 'Point',
+        coordinates: [m.long, m.lat],
+      },
+      properties: {
+        ...m,
+      },
+    }))
 
-      await addMerchantMarker(map, merchantFeatures)
+    await addMerchantMarker(map, merchantFeatures)
 
-      map.on('click', MerchantMarkerLayerID, (e) => {
-        console.log(e.features)
-        const index = merchantFeatures.findIndex(f => f.properties.id === e.features![0].properties.id)
-        nearestIndex.value = index
-      })
-    }
-    catch (e) {
-      console.log('Failed to fetch bjir')
-      console.log(e)
-    }
+    map.on('click', MerchantMarkerLayerID, (e) => {
+      nearestIndex.value = merchantFeatures.findIndex(f => f.properties.id === e.features![0].properties.id)
+    })
 
     resume()
 

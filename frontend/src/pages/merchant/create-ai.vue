@@ -37,12 +37,16 @@ function retake() {
 
 <template>
   <div class="absolute left-0 top-0 h-full w-full">
-    <img ref="imageRef" class="h-100 w-full bg-gray">
+    <MerchantHeader>
+      Generate with AI
+    </MerchantHeader>
+
+    <img ref="imageRef" class="mb-5 h-[60%] w-full bg-gray">
 
     <NInput v-model:value="text" class="mb-3" type="textarea" />
-    <div class="w-full flex justify-between">
+    <div class="absolute bottom-5 w-full flex justify-between">
       <NButton
-        text class="w-[150px] grow-0" :loading="loading" @click="() => {
+        text class="w-[150px] grow-0" :disabled="loading" @click="() => {
           router.push('/merchant')
         }"
       >
@@ -52,6 +56,7 @@ function retake() {
       <NButton
         v-if="imageURL == null"
         :loading="loading"
+        :disabled="loading || text == null"
         type="primary" secondary class="grow-1" @click="() => {
           generate()
         }"
