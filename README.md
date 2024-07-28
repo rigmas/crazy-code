@@ -55,4 +55,6 @@ The project is containerized using Docker and orchestrated with Docker Compose, 
 
 
 ## Deployment
-This application is already deployed to the cloud, you can find it in this link https://xxx.no
+This application is already deployed to the cloud,
+you can find it in this link https://crazy-code.sahito.no/merchant (for merchant)
+and https://crazy-code.sahito.no (for user)
