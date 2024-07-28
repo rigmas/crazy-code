@@ -8,8 +8,6 @@ exports.create = async (req) => {
     const storedMindfile = uploadFileBase64(`${id}_mindfile`, mindfile, '.mind')
     const storedPhoto = uploadFileBase64(`${id}_photo`, photo, '.png')
 
-    console.log({ storedMindfile, storedPhoto })
-
     const data = { id, name, long, lat, mindfile: `${id}_mindfile.mind`, photo: `${id}_photo.png` }
 
     const saved = await Cache.set(id, JSON.stringify(data))
