@@ -11,7 +11,6 @@ import VueMacros from 'unplugin-vue-macros/vite'
 import VueRouter from 'unplugin-vue-router/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
 import basicSsl from '@vitejs/plugin-basic-ssl'
-import ViteVConsole from 'vite-plugin-vconsole'
 
 export default defineConfig({
   resolve: {
@@ -33,16 +32,16 @@ export default defineConfig({
       },
     }),
 
-    ViteVConsole({
-      entry: path.resolve('src/main.ts'),
-      localEnabled: true,
-      enabled: true,
-      config: {
-        // vconsole options
-        maxLogNumber: 1000,
-        theme: 'dark',
-      },
-    }),
+    // ViteVConsole({
+    //   entry: path.resolve('src/main.ts'),
+    //   localEnabled: true,
+    //   enabled: true,
+    //   config: {
+    //     // vconsole options
+    //     maxLogNumber: 1000,
+    //     theme: 'dark',
+    //   },
+    // }),
 
     // https://github.com/posva/unplugin-vue-router
     VueRouter(),
